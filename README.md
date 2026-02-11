@@ -9,6 +9,8 @@ This repository contains a ROS 2 workspace for controlling **PX4-powered Iris dr
 > - **NVIDIA Isaac Sim v5.1**
 > - **NVIDIA driver 580.119.02** (verify with `nvidia-smi`)
 > - Ubuntu 22.04 + ROS 2 Humble
+>
+> - ![Alt text](isaac.png)
 
 ---
 
@@ -95,7 +97,7 @@ The workspace is as follows :
 ws_px4_ros2 -> src -> Unzip the attached 'px4_keyboard_teleop' into a folder + Here install latest builds of px4_msgs and px4_ros_com
 
 The src folder should look like this : 
-//Add image
+![Alt text](src.png)
 
 git clone https://github.com/PX4/px4_msgs.git
 git clone https://github.com/PX4/px4_ros_com.git
