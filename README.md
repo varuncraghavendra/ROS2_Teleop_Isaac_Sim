@@ -108,10 +108,31 @@ source install/setup.bash
 ```
 
 ---
+## PX4 ↔ ROS 2 bridge notes (uXRCE-DDS)
 
-## Run: Single drone (warehouse_drone)
+PX4’s ROS 2 integration typically uses **uXRCE-DDS**:
+- A **uXRCE-DDS client** runs on PX4.
+- A **micro XRCE-DDS agent** runs on the companion computer (your machine).  
+PX4 docs: https://docs.px4.io/main/en/middleware/uxrce_dds  
+ROS 2 user guide: https://docs.px4.io/main/en/ros2/user_guide
 
-### Terminal 1 — Start Isaac Sim + Pegasus + PX4 autolaunch
+If you don’t see `/fmu/*` topics, you usually need:
+1) Agent on your machine (example):
+```bash
+MicroXRCEAgent udp4 -p 8888
+```
+2) Client started inside PX4:
+```bash
+uxrce_dds_client start -t udp -p 8888
+```
+
+> Exact transport/ports depend on your sim/bridge setup. Start from PX4 docs above and align with your PX4 SITL configuration.
+
+---
+
+## Run: Single/Swarm drone (warehouse_drone)
+
+### Terminal 1 — Start Isaac Sim + Pegasus + PX4 autolaunch (I place these scripts inside PegasusSimulator/examples)
 From your Isaac Sim directory:
 
 ```bash
@@ -119,15 +140,25 @@ cd "$ISAAC_SIM_INSTALL_ROOT"
 ./python.sh /ABS/PATH/warehouse_drone.py --px4_dir /home/$USER/PX4-Autopilot
 ```
 
-### Terminal 2 — Start ROS 2 nodes (example offboard)
-If your `my_px4_offboard` is a **plain script** (not an installed ROS package), run it directly:
+```bash
+cd "$ISAAC_SIM_INSTALL_ROOT"
+ ~/isaacsim/python.sh /home/PegasusSimulator/examples/warehouse_multi_px4.py   --px4_dir /home/varun/PX4-Autopilot   --num_drones 3
+```
+
+
+### Terminal 2 — Start ROS 2 nodes (example offboard):
 
 ```bash
 cd ws_px4_ros2
 source /opt/ros/humble/setup.bash
 source install/setup.bash
 
-python3 src/my_px4_offboard/src/offboard_node.py
+For controlling one drone
+`ros2 run px4_keyboard_teleop gui`
+
+For controlling 3 drones (change number for as many drones as you want, tested for 3 drones)
+`ros2 run px4_keyboard_teleop gui_multi --num_drones 3 `
+
 ```
 
 > If you later convert `my_px4_offboard` into a proper ROS 2 package (with `package.xml` + `setup.py`), you can use `ros2 run ...` instead.
@@ -151,27 +182,6 @@ Useful options:
 
 ---
 
-## PX4 ↔ ROS 2 bridge notes (uXRCE-DDS)
-
-PX4’s ROS 2 integration typically uses **uXRCE-DDS**:
-- A **uXRCE-DDS client** runs on PX4.
-- A **micro XRCE-DDS agent** runs on the companion computer (your machine).  
-PX4 docs: https://docs.px4.io/main/en/middleware/uxrce_dds  
-ROS 2 user guide: https://docs.px4.io/main/en/ros2/user_guide
-
-If you don’t see `/fmu/*` topics, you usually need:
-1) Agent on your machine (example):
-```bash
-MicroXRCEAgent udp4 -p 8888
-```
-2) Client started inside PX4:
-```bash
-uxrce_dds_client start -t udp -p 8888
-```
-
-> Exact transport/ports depend on your sim/bridge setup. Start from PX4 docs above and align with your PX4 SITL configuration.
-
----
 
 ## QGroundControl (recommended)
 
@@ -215,3 +225,5 @@ Pegasus is sensitive to driver + Isaac Sim compatibility. The working combo for 
 - PX4 + PX4 ROS 2 bridge (`px4_ros_com`, `px4_msgs`)
 - Pegasus Simulator (Isaac Sim extension)
 - NVIDIA Isaac Sim
+- https://github.com/artastier/PX4_Swarm_Controller
+- https://github.com/ARK-Electronics/ROS2_PX4_Offboard_Example
