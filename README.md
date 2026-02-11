@@ -222,6 +222,58 @@ Pegasus is sensitive to driver + Isaac Sim compatibility. The working combo for 
 
 ---
 
+## ⌨️ Keyboard Controls (Pitch / Roll / Yaw)
+
+The drone can be manually controlled using a keyboard with conventional attitude-style inputs.
+
+### 🚁 Pitch (Forward / Back Tilt)
+
+| Key | Action |
+|------|--------|
+| **W** | Pitch Forward |
+| **S** | Pitch Backward |
+
+Controls forward / backward motion.
+
+---
+
+### 🚁 Roll (Left / Right Tilt)
+
+| Key | Action |
+|------|--------|
+| **A** | Roll Left |
+| **D** | Roll Right |
+
+Controls lateral (sideways) motion.
+
+---
+
+### 🔄 Yaw (Rotation / Heading)
+
+| Key | Action |
+|------|--------|
+| **Q** | Yaw Left (Counter-Clockwise) |
+| **E** | Yaw Right (Clockwise) |
+
+Rotates the drone without translating.
+
+---
+
+### ⬆ Throttle / Altitude
+
+| Key | Action |
+|------|--------|
+| **↑ (Up Arrow)** | Increase Throttle / Ascend |
+| **↓ (Down Arrow)** | Decrease Throttle / Descend |
+
+Controls vertical movement.
+
+---
+
+### ✅ Control Layout Reference
+
+
+
 ## Tips for swarm workflows
 
 - Keep a clean mapping of **vehicle_id → namespace/topics** for multi-drone control.
