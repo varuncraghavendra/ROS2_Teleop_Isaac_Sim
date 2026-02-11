@@ -263,8 +263,8 @@ Rotates the drone without translating.
 
 | Key | Action |
 |------|--------|
-| **↑ (Up Arrow)** | Increase Throttle / Ascend |
-| **↓ (Down Arrow)** | Decrease Throttle / Descend |
+| **↑ R** | Increase Throttle / Ascend |
+| **↓ F** | Decrease Throttle / Descend |
 
 Controls vertical movement.
 
