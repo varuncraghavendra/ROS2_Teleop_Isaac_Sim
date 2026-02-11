@@ -81,7 +81,7 @@ source install/setup.bash
 ### Start Isaac Sim to recieve ROS2 Commands
 
 ```bash
-cd PegasusSimulator/examples
+cd PegasusSimulator
 ~/isaacsim/python.sh 1_px4_single_vehicle.py 
 ```
 
