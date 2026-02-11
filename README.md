@@ -96,7 +96,7 @@ MicroXRCEAgent udp4 -p 8888
 ### Terminal 2 – Isaac Sim (PX4 SITL)
 ```bash
 cd PegasusSimulator
-~/isaacsim/python.sh drone_camera_lidar_isaac_sim.py --px4_dir /home/varun/PX4-Autopilot
+~/isaacsim/python.sh warehouse_drone.py --px4_dir /home/PX4-Autopilot
 ```
 
 ### Terminal 3 – QGroundControl
