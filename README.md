@@ -1,7 +1,9 @@
 # PX4 Keyboard & GUI Teleoperation (ROS 2 DDS + Isaac Sim)
 
 This package provides **keyboard and GUI-based OFFBOARD position control** for PX4 using the **ROS 2 DDS bridge (Micro XRCE-DDS)**.  
-It is designed to work **simultaneously with QGroundControl and Isaac Sim**.
+It is designed to work **simultaneously with QGroundControl and Isaac Sim**. 
+
+One drone and Many Drones in a Warehouse Digital Twin
 
 You can:
 - Arm / Disarm
