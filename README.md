@@ -91,6 +91,15 @@ rosdep update
 
 ## Workspace setup (ROS 2)
 
+The workspace is as follows : 
+ws_px4_ros2 -> src -> Unzip the attached 'px4_keyboard_teleop' into a folder + Here install latest builds of px4_msgs and px4_ros_com
+
+The src folder should look like this : 
+//Add image
+
+git clone https://github.com/PX4/px4_msgs.git
+git clone https://github.com/PX4/px4_ros_com.git
+
 Unzip / place the workspace where you want it, then:
 
 ```bash
