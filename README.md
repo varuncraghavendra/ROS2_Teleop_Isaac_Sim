@@ -78,17 +78,26 @@ source install/setup.bash
 
 ## ▶️ Running the System
 
-### Start PX4 SITL
+### Start Isaac Sim to recieve ROS2 Commands
 
 ```bash
-cd PX4-Autopilot
-make px4_sitl gazebo
+cd PegasusSimulator/examples
+~/isaacsim/python.sh 1_px4_single_vehicle.py 
 ```
+
+### Run QGroundcontrol
+
+```
+ ./QGroundControl-x86_64.AppImage
+```
+
+---
 
 ### Run the Offboard Node
 
 ```bash
-ros2 run my_px4_offboard offboard_node.py
+export ROS_DOMAIN_ID=0
+ros2 run px4_keyboard_teleop gui
 ```
 
 ---
@@ -107,7 +116,7 @@ ros2 run my_px4_offboard offboard_node.py
 
 - PX4 v1.14+  
 - ROS 2 Humble  
-- Gazebo SITL  
+- Isaac Sim 5.1
 
 ---
 
